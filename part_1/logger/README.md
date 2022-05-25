@@ -22,3 +22,16 @@
 2. kubectl logs -f logger-dep-< hash >
 
 ![program output](output_103.png "Deployment")
+
+## 1.07
+
+Update to application.
+Creating ingress.yaml & service.yaml
+
+### Kube deployment
+
+1. kubectl apply -f manifests/deployment.yaml
+2. kubectl apply -f manifests/service.yaml
+3. kubectl apply -f manifests/ingress.yaml
+
+![program output](output_107.png "Deployment")

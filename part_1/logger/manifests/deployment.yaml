@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: logger
-          image: sokkanen/logger:latest
+          image: sokkanen/logger:107a

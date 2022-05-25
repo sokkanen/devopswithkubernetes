@@ -40,3 +40,15 @@ Created service.yaml
 ### Kube deployment
 
 - kubectl apply -f manifests/service.yaml
+
+## 1.08
+
+Created ingress.yaml
+Modified service.yaml from NodePort to ClusterIP
+
+### Kube deployment
+
+1. kubectl apply -f manifests/service.yaml
+2. kubectl apply -f manifests/ingress.yaml
+
+![program output](output_108.png "Deployment")
