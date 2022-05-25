@@ -8,9 +8,17 @@
 
 ### Kube deployment
 
-
 1. k3d cluster create -a 2
 2. kubectl create deployment logger-dep --image=sokkanen/logger
 3. kubectl logs -f logger-dep-d74cfdc49-q9q6b
 
-![program output](output.png "Deployment")
+![program output](output_101.png "Deployment")
+
+## 1.03
+
+### Kube deployment
+
+1. kubectl apply -f manifests/deployment.yaml
+2. kubectl logs -f logger-dep-< hash >
+
+![program output](output_103.png "Deployment")
