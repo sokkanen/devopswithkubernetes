@@ -1,11 +1,12 @@
 import express from 'express'
-import { getCurrent } from './logger.js'
+import { getLatest } from './reader.js'
 
 const app = express()
 const PORT = 3000
 
-app.get('/current', (_req, res) => {
-    res.send(getCurrent())
+app.get('/latest', async (_req, res) => {
+    const lastLine = await getLatest()
+    res.send(lastLine)
 })
 
 app.listen(PORT, () => {

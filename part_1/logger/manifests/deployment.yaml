@@ -12,6 +12,17 @@ spec:
       labels:
         app: logger
     spec:
+      volumes:
+        - name: shared-image
+          emptyDir: {}
       containers:
         - name: logger
-          image: sokkanen/logger:107a
+          image: sokkanen/logger:110
+          volumeMounts:
+          - name: shared-image
+            mountPath: /app/files
+        - name: timestamper
+          image: sokkanen/timestamper:110
+          volumeMounts:
+          - name: shared-image
+            mountPath: /app/files

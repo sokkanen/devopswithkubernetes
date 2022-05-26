@@ -91,10 +91,19 @@ Created service.yaml
 
 ![program output](output_108.png "Deployment")
 
-## 1.08 - Logger & PingPong
+## 1.09 - Logger & PingPong
 
 - Created PingPong application with deployment.yaml & service.yaml
 - Modified logger's ingress.yaml to pass /pingpong to pingpong application
 - Deployed everything.
 
 ![program output](output_109.png "Deployment")
+
+## 1.10 - Logger & Timestamper
+
+- Created Timestamper application to create file entries.
+- Modified Logger to read last line of the shared file (../files/entries.txt)
+- Modified logger's deployment.yaml to share volume with timestamper
+- Re-Deployed logger-dep.
+
+![program output](output_110.png "Deployment")
