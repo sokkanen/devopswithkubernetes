@@ -125,3 +125,9 @@ Created service.yaml
 - Deployed everything
 
 ![program output](output_112.png "Deployment")
+
+## 1.13 - Project
+
+- Added the required functionalities to Project (TODO-App)
+
+![program output](output_113.png "Deployment")

@@ -8,9 +8,18 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 <body>
-    <h1>Hello Todo-App!</h1>
-    <div id="image"></div>
-    <button onclick="addTodo()">Add ToDo</button>
+    <div class="main">
+        <div class="main-image" id="image"></div>
+        <div class="todo-input">
+            <input id="new_todo" type="text" placeholder="Type in your todo"/>
+            <button onclick="addTodo()">Add ToDo</button>
+            <p class="new-todo-error" id="new_todo_error"></p>
+        </div>
+        <ol class="todo-list">
+            <li>First todo</li>
+            <li>Second todo</li>
+        </ol>
+    </div>
     <script src="javascript/main.js" type="text/javascript">defer</script>
     <script type="text/javascript">
         addImage()
