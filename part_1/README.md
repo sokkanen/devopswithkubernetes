@@ -117,3 +117,11 @@ Created service.yaml
 - Modified PingPong's deployment.yaml to share a persistent volume with Logger
 
 ![program output](output_111.png "Deployment")
+
+## 1.12 - Project
+
+- Modified Project to fetch and display a daily image
+- Added a volume to the project deployment.yaml
+- Deployed everything
+
+![program output](output_112.png "Deployment")

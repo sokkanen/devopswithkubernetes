@@ -1,6 +1,7 @@
 FROM alpine:latest
-WORKDIR /app
-COPY index.js .
+WORKDIR /app/todoapp
+COPY ./src ./src
+COPY ./public ./public
 COPY package.json .
 ENV PORT 8080
 EXPOSE 8080

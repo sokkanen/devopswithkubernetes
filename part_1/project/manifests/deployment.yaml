@@ -12,6 +12,12 @@ spec:
       labels:
         app: todo
     spec:
+      volumes:
+        - name: todo-volume
+          emptyDir: {}
       containers:
         - name: todo
-          image: sokkanen/todoapp:106a
+          image: sokkanen/todoapp:112
+          volumeMounts:
+          - name: todo-volume
+            mountPath: /app/todoapp/public/images
