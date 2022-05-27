@@ -1,15 +1,13 @@
 import fs from 'fs'
 import readline from 'readline'
 
-const basePath = '../files'
-
-const readLatest = () => {
-    const file = `${basePath}/entries.txt`
-    const exists = fs.existsSync(file)
+export const readLatestFromFile = (basePath, file) => {
+    const dest = `${basePath}/${file}`
+    const exists = fs.existsSync(dest)
     if (exists) {
         return new Promise((resolve, reject) => {
             const read = readline.createInterface({
-                input: fs.createReadStream(file, 'utf-8'),
+                input: fs.createReadStream(dest, 'utf-8'),
                 crlfDelay: Infinity
             })
             let lastLine = ''
@@ -18,13 +16,9 @@ const readLatest = () => {
             })
             read.on('error', reject)
             read.on('close', () => {
-                resolve(`${lastLine}\n`)
+                resolve(`${lastLine}`)
             })
         })
     }
-    console.log(`${file} does not exist. :(`)
-}
-
-export const getLatest = () => {
-    return readLatest()
+    console.log(`${dest} does not exist. :(`)
 }

@@ -107,3 +107,13 @@ Created service.yaml
 - Re-Deployed logger-dep.
 
 ![program output](output_110.png "Deployment")
+
+## 1.11 - Logger & PingPong ( & Timestamper )
+
+- Modified PingPong to persist pongs to a file.
+- Modified Logger to read pongs from a shared file (../files/pongs.txt)
+- Deployed Persistent volume & Persistent volume claim
+- Modified logger's deployment.yaml to share a persistent volume with PingPong
+- Modified PingPong's deployment.yaml to share a persistent volume with Logger
+
+![program output](output_111.png "Deployment")
