@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timestamper-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: timestamper
+  template:
+    metadata:
+      labels:
+        app: timestamper
+    spec:
+      containers:
+        - name: timestamper
+          image: sokkanen/timestamper:201

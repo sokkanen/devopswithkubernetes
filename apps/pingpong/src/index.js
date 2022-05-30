@@ -8,7 +8,7 @@ let calls = 0
 app.get('*', (_req, res) => {
     calls += 1
     res.send(`pong ${calls}\n`)
-    saveToFile(calls)
+    //saveToFile(calls)
 })
 
 app.listen(PORT, () => {

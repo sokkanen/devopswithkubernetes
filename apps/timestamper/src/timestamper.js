@@ -3,6 +3,7 @@ import fs from 'fs'
 
 const OUTPUT = v4()
 const basePath = '../files'
+let current = '';
 
 const createFolderIfNotExists = () => {
     const exists = fs.existsSync(basePath)
@@ -19,12 +20,15 @@ const saveToFile = (entry) => {
     }
 }
 
-const createTimestamp = () => {
+export const createTimestamp = () => {
     setInterval(() => {
         const now = new Date()
         const entry = `${now.toISOString()}: ${OUTPUT}\n`
-        saveToFile(entry)
+        current = entry
+        //saveToFile(entry)
     }, 5000);
 }
 
-createTimestamp()
+export const getCurrent = () => {
+    return current
+}
