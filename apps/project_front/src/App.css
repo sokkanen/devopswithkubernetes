@@ -1,0 +1,32 @@
+.main {
+  width: 100vw;
+  height: 75vh;
+  display: grid;
+  grid-template-areas: 
+      ". image list"
+      ". add list";
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.main-image {
+  grid-area: image;
+}
+
+.image {
+  max-width: 640px;
+  max-height: 640px;
+}
+
+.todo-input {
+  grid-area: add;
+}
+
+.todo-list {
+  grid-area: list;
+}
+
+.new-todo-error {
+  font-size: large;
+  color: red;
+}

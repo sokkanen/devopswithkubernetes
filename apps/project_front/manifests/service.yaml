@@ -1,13 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: todo-backend
+  name: todo-ui-svc
 spec:
   type: ClusterIP
   selector:
-    app: todo-backend
+    app: todo-ui
   ports:
-    - name: http
-      port: 80
+    - port: 2345
       protocol: TCP
-      targetPort: 8080
+      targetPort: 8090

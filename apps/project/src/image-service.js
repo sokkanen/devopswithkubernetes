@@ -1,12 +1,22 @@
 import axios from 'axios'
+import { SSL_OP_EPHEMERAL_RSA } from 'constants'
 import fs from 'fs'
+import { pipeline } from 'stream/promises';
 
 const BASEPATH = './public/images'
 const URL = 'https://picsum.photos/1200'
 
-const fetchAndSaveImage = async (filename) => {
-    const image = await axios.get(URL, { responseType: 'stream' })
-    image.data.pipe(fs.createWriteStream(`${BASEPATH}/${filename}.jpg`))
+const fetchAndSaveImage = async (imagePath) => {
+    const imagePromise = new Promise(async (resolve, reject) => {
+        const writer = fs.createWriteStream(imagePath)
+        const response = await axios.get(URL, { responseType: 'stream' })
+        const img = response.data.pipe(writer).on('close', () => {
+            console.log('File saved.')
+            const image = readLocalImage(imagePath)
+            return resolve(image)
+        })
+    })
+    return await imagePromise
 }
 
 const createFolderIfNotExists = () => {
@@ -14,28 +24,21 @@ const createFolderIfNotExists = () => {
     exists ? null : fs.mkdirSync(BASEPATH) 
 }
 
-const readLocalImage = () => {
-    const now = new Date().toISOString().split('T')[0]
-    const imageFile = `img_${now}`
-    const exists = fs.existsSync(`${BASEPATH}/${imageFile}.jpg`)
-    return { exists: exists, filename: imageFile }
+const readLocalImage = (imagePath) => {
+    console.log('Fetching locally stored image..')
+    return fs.readFileSync(imagePath)
 }
 
-export const getDailyImage = async (_req, _res, next) => {
-    const read = readLocalImage()
-    if (read.exists) {
-        console.log(`${read.filename} already exists.`)
-        next()
+export const getImage = async () => {
+    const now = new Date().toISOString().split('T')[0]
+    const imageName = `img_${now}`
+    const imagePath = `${BASEPATH}/${imageName}.jpg`
+    if (fs.existsSync(imagePath)) {
+        console.log(`${imageName} found.`)
+        return readLocalImage(imagePath)
     } else {
-        try {
-            createFolderIfNotExists()
-            await fetchAndSaveImage(read.filename)
-            console.log(`${read.filename} successfully saved.`)
-        } catch (error) {
-            console.log(error)
-        } finally {
-            next()
-        }
+        createFolderIfNotExists()
+        return await fetchAndSaveImage(imagePath)
     }
 }
 
