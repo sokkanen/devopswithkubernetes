@@ -34,3 +34,14 @@
 ### Output
 
 ![program output](output_203.png "Deployment")
+
+## 2.04 - Project (todoapp)
+
+### Steps
+
+- Created namespace `todo-namespace`
+- Deployed everything to the new namespace
+
+### Output
+
+![program output](output_204.png "Deployment")
