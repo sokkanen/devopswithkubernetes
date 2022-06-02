@@ -23,3 +23,14 @@
 ### Output
 
 ![program output](output_202.png "Deployment")
+
+## 2.03 - Logger, PingPong & Timestamper
+
+### Steps
+
+- Created namespace `logger-namespace`
+- Deployed everything to the new namespace
+
+### Output
+
+![program output](output_203.png "Deployment")

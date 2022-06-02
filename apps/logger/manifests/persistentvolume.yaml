@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: logger-pv
+  namespace: logger-namespace
 spec:
   storageClassName: manual
   capacity:
