@@ -21,7 +21,13 @@ spec:
 #            claimName: volume-claim
       containers:
         - name: logger
-          image: sokkanen/logger:201b
+          image: sokkanen/logger:206a
+          env:
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: logger-configmap
+                  key: message
 #          volumeMounts:
 #          - name: shared-image
 #            mountPath: /app/files

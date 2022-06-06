@@ -45,3 +45,18 @@
 ### Output
 
 ![program output](output_204.png "Deployment")
+
+## 2.05 - SOPS
+
+Read and understood.
+
+## 2.06 - Logger
+
+### Steps
+
+- Created configmap `logger-configmap`
+- Passed the value from configmap as env to the deployment
+- Deployed configmap & deployment
+
+![program output](output_206.png "Deployment")
+
