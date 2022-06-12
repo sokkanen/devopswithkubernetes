@@ -60,3 +60,18 @@ Read and understood.
 
 ![program output](output_206.png "Deployment")
 
+## 2.07 - PingPong (Logger)
+
+### Steps
+
+- Deployed PSQL as a statefulSet to the cluster.
+- Updated the pingpong app to store ping/pong count to psql.
+- Created `configmap.yaml` for both pingpong & pingpong-db
+- Created `secret.yaml`, which was encrypted with age + sops.
+- Deployed configmaps, secret & updated deployment
+
+### Output
+
+![program output](output_207a.png "Deployment")
+![program output](output_207b.png "Deployment")
+![program output](output_207c.png "Deployment")

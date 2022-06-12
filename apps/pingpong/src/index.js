@@ -1,16 +1,16 @@
 import express from 'express'
-import { saveToFile } from './persist-data.js'
+import { fetchPingPongs, incrementPingPongs } from './pingpong-service.js'
+import { createTables } from './db.js' 
 
 const app = express()
 const PORT = 3010
-let calls = 0
 
-app.get('*', (_req, res) => {
-    calls += 1
+app.get('*', async (_req, res) => {
+    await incrementPingPongs()
+    const calls = await fetchPingPongs()
     res.send(`pong ${calls}\n`)
-    //saveToFile(calls)
 })
 
-app.listen(PORT, () => {
+createTables() && app.listen(PORT, () => {
     console.log(`Ping pong is listerning to ${PORT}`)
 })
