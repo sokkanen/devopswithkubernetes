@@ -1,11 +1,13 @@
 import 'dotenv/config'
 import express from 'express'
-import { getImage } from './image-service.js'
-import { getTodos, addTodo } from './todo-service.js'
+import { createTables } from './db/db.js'
+import { getImage } from './services/image-service.js'
+import { getTodos, addTodo } from './services/todo-service.js'
 
 const app = express()
 app.use(express.json())
 const PORT = process.env.PORT ?? 8080
+await createTables()
 
 app.get('/api/image', async (_req, res) => {
     const image = await getImage()

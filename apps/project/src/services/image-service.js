@@ -1,7 +1,5 @@
 import axios from 'axios'
-import { SSL_OP_EPHEMERAL_RSA } from 'constants'
 import fs from 'fs'
-import { pipeline } from 'stream/promises';
 
 const BASEPATH = './public/images'
 const URL = 'https://picsum.photos/1200'

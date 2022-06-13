@@ -5,7 +5,8 @@ export const getTodos = async () => {
 }
 
 export const addTodo = async (todo) => {
-    return await performRequest('POST', '/api/todos', { todo })
+    const added = await performRequest('POST', '/api/todos', { todo })
+    return added
 }
 
 const performRequest = async (method, url, data = undefined) => {

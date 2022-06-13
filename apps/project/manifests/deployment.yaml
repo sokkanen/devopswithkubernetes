@@ -15,4 +15,9 @@ spec:
     spec:
       containers:
         - name: todo-backend
-          image: sokkanen/todoapp:202
+          image: sokkanen/todoapp:208
+          envFrom:
+          - configMapRef:
+              name: todo-config
+          - secretRef:
+              name: todo-secrets

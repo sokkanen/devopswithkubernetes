@@ -75,3 +75,19 @@ Read and understood.
 ![program output](output_207a.png "Deployment")
 ![program output](output_207b.png "Deployment")
 ![program output](output_207c.png "Deployment")
+
+## 2.08 - Project (Todoapp)
+
+### Steps
+
+- Deployed PSQL as a statefulSet to the cluster.
+- Updated the project backend to store todos to psql.
+- Minor update to frontend source / deployment
+- Created `configmap.yaml` for both todo backend & todo-db
+- Created `secret.yaml`, which was encrypted with age + sops.
+- Deployed configmaps, secret & updated deployment
+
+### Output
+
+![program output](output_208a.png "Deployment")
+![program output](output_208b.png "Deployment")

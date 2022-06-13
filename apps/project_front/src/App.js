@@ -6,7 +6,7 @@ import './App.css';
 const TodoList = ({ todos }) => {
   return (
     <ol className="todo-list">
-      {todos.map((todo) => <li key={todo}>{todo}</li>)}
+      {todos.map((todo) => <li key={todo.todo}>{todo.todo}</li>)}
     </ol>
   )
 }
@@ -42,7 +42,7 @@ const App = () => {
     getDailyImage()
   }, [])
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const newTodo = event.target.new_todo.value
     if (event.target.new_todo.value.length >= 140) {
@@ -51,8 +51,8 @@ const App = () => {
     } else {
       setTodoError('')
       event.target.new_todo.value = ''
-      setTodos(todos => [...todos, newTodo])
-      addTodo(newTodo)
+      const added = await addTodo(newTodo)
+      setTodos(todos => [...todos, added])
     }
   }
 
