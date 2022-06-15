@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: daily-todo
+  namespace: todo-namespace
+spec:
+  schedule: "0 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: daily-todo
+            image: sokkanen/daily-todo:209a
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - ./wiki.sh todo-backend:80
+          restartPolicy: OnFailure
+
+
+
