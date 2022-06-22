@@ -39,7 +39,7 @@ jobs:
         uses: imranismail/setup-kustomize@v1
       - name: Deploy Backend
         run: |-
-          kustomize edit set image gcr.io/PROJECT_ID/IMAGE=gcr.io/$PROJECT_ID/todoapp:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
+          kustomize edit set image PROJECT/IMAGE=gcr.io/$PROJECT_ID/todoapp:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
           kustomize build ./apps/project/ | kubectl apply -f -
           kubectl rollout status deployment todoapp
           kubectl get services -o wide
@@ -56,7 +56,7 @@ jobs:
         uses: imranismail/setup-kustomize@v1
       - name: Deploy UI
         run: |-
-          kustomize edit set image gcr.io/PROJECT_ID/IMAGE=gcr.io/$PROJECT_ID/todoapp-ui:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
+          kustomize edit set image PROJECT/IMAGE=gcr.io/$PROJECT_ID/todoapp-ui:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
           kustomize build ./apps/project_front | kubectl apply -f -
           kubectl rollout status deployment todoapp-ui
           kubectl get services -o wide
