@@ -104,3 +104,14 @@ Read and understood.
 ### Output
 
 ![program output](output_209.png "Deployment")
+
+## 2.10 - Project (Todoapp)
+
+### Steps
+
+- Installed Prometheus + Grafana + Loki
+- Improved logging & Todo validation in Application
+
+### Output
+
+![program output](output_210.png "Deployment")

@@ -4,7 +4,8 @@
   display: grid;
   grid-template-areas: 
       ". image list"
-      ". add list";
+      ". add list"
+      ". error list";
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
@@ -27,6 +28,7 @@
 }
 
 .new-todo-error {
+  grid-area: error;
   font-size: large;
   color: red;
 }

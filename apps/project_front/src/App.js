@@ -44,15 +44,14 @@ const App = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    setTodoError('')
     const newTodo = event.target.new_todo.value
-    if (event.target.new_todo.value.length >= 140) {
-      setTodoError('Todo not added. Maximum length 140 characters.')
-      event.target.new_todo.value = ''
-    } else {
-      setTodoError('')
-      event.target.new_todo.value = ''
+    event.target.new_todo.value = ''
+    try {
       const added = await addTodo(newTodo)
       setTodos(todos => [...todos, added])
+    } catch (error) {
+      setTodoError(`Oops! ${error.response.data}`)
     }
   }
 

@@ -15,4 +15,4 @@ spec:
     spec:
       containers:
         - name: todo-ui
-          image: sokkanen/todoapp-ui:208
+          image: sokkanen/todoapp-ui:210

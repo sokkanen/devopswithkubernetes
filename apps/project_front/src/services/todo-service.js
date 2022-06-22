@@ -19,7 +19,6 @@ const performRequest = async (method, url, data = undefined) => {
         })
         return response.data
     } catch (error) {
-        console.error(error)
-        return null
+        throw error
     }
 }

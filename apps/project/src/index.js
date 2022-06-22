@@ -1,8 +1,10 @@
 import 'dotenv/config'
 import express from 'express'
+import 'express-async-errors'
 import { createTables } from './db/db.js'
 import { getImage } from './services/image-service.js'
-import { getTodos, addTodo } from './services/todo-service.js'
+import { todoRouter } from './routers/todo-router.js'
+
 
 const app = express()
 app.use(express.json())
@@ -15,15 +17,7 @@ app.get('/api/image', async (_req, res) => {
     res.end(image, 'utf-8')
 })
 
-app.get('/api/todos', async (_req, res) => {
-    const todos = await getTodos()
-    res.json(todos)
-})
-
-app.post('/api/todos', async (req, res) => {
-    const added = await addTodo(req.body.todo)
-    res.send(added)
-})
+app.use('/api/todos', todoRouter)
 
 app.use('*',  (req, res, next) => {
     console.log(`Unknown path ${req.baseUrl}`)
