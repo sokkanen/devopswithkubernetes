@@ -32,3 +32,13 @@
 ### Output
 
 ![program output](output_303.png "Deployment")
+
+## 3.04 - Project (TodoApp)
+
+### Steps
+
+- Refactored GitHub action to create new deployment in a namespace `todo-<BranchName>`
+
+### Output
+
+![program output](output_304.png "Deployment")

@@ -58,6 +58,7 @@ const App = () => {
   return (
     <div className="main">
       <div className="main-image" id="image">
+        <h1>Wow, Greetings from another branch!</h1>
         <img src={image} alt="some random content"/>
       </div>
         <TodoForm addTodo={handleSubmit}/>
