@@ -20,4 +20,4 @@ spec:
           - configMapRef:
               name: todo-config
           - secretRef:
-              name: todo-secrets
+              name: todo-secrets.todo-namespace
