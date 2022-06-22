@@ -21,7 +21,7 @@ spec:
           - configMapRef:
               name: todo-db-config
           - secretRef:
-              name: todo-secrets.todo-namespace
+              name: todo-secrets
           ports:
             - name: web
               containerPort: 5432
