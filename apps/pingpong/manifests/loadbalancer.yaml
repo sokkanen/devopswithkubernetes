@@ -4,7 +4,7 @@ metadata:
   name: pingpong-svc
   namespace: logger-namespace
 spec:
-  type: LoadBalancer
+  type: NodePort # LoadBalancer
   selector:
     app: pingpong
   ports:

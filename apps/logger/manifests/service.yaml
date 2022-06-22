@@ -4,11 +4,11 @@ metadata:
   name: logger-svc
   namespace: logger-namespace
 spec:
-  type: ClusterIP
+  type: NodePort # NodePort needed for GKE Ingress. ClusterIP for internal.
   selector:
     app: logger
   ports:
-    - name: logger-fwd
-      port: 2345
+    - name: http
+      port: 80
       protocol: TCP
       targetPort: 3000

@@ -13,12 +13,6 @@ spec:
       labels:
         app: logger
     spec:
-#      volumes:
-#        - name: shared-image
-#          emptyDir: {}
-#        - name: shared-volume
-#          persistentVolumeClaim:
-#            claimName: volume-claim
       containers:
         - name: logger
           image: sokkanen/logger:206a
@@ -28,13 +22,3 @@ spec:
                 configMapKeyRef:
                   name: logger-configmap
                   key: message
-#          volumeMounts:
-#          - name: shared-image
-#            mountPath: /app/files
-#          - name: shared-volume
-#            mountPath: /app/pongs
-#        - name: timestamper
-#          image: sokkanen/timestamper:110
-#          volumeMounts:
-#          - name: shared-image
-#            mountPath: /app/files
