@@ -42,7 +42,7 @@ jobs:
           cd ./apps/project
           kustomize edit set image PROJECT/IMAGE=gcr.io/$PROJECT_ID/todoapp:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
           kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment todoapp
+          kubectl rollout status deployment/todo-backend-dep -n todo-namespace
           kubectl get services -o wide
 
       - name: Build UI
@@ -60,5 +60,5 @@ jobs:
           cd ./apps/project_front
           kustomize edit set image PROJECT/IMAGE=gcr.io/$PROJECT_ID/todoapp-ui:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
           kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment todoapp-ui
+          kubectl rollout status deployment/todo-ui-dep -n todo-namespace
           kubectl get services -o wide
