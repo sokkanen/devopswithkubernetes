@@ -20,3 +20,15 @@
 ### Output
 
 ![program output](output_302.png "Deployment")
+
+## 3.03 - Project (TodoApp)
+
+### Steps
+
+- Minor adjustments to application .yaml's.
+- kustomization.yaml for both backend and frontend
+- GitHub workflow for building & Deploying the Application
+
+### Output
+
+![program output](output_303.png "Deployment")
