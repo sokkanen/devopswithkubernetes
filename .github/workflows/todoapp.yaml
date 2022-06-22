@@ -40,9 +40,12 @@ jobs:
       - name: Deploy Backend
         run: |-
           cd ./apps/project
+          kubectl create namespace todo-${GITHUB_REF#refs/heads/} || true
+          kubectl config set-context --current --namespace=todo-${GITHUB_REF#refs/heads/}
+          kustomize edit set namespace todo-${GITHUB_REF#refs/heads/}
           kustomize edit set image PROJECT/IMAGE=gcr.io/$PROJECT_ID/todoapp:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
           kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment/todo-backend-dep -n todo-namespace
+          kubectl rollout status deployment/todo-backend-dep -n todo-${GITHUB_REF#refs/heads/}
           kubectl get services -o wide
 
       - name: Build UI
@@ -58,7 +61,9 @@ jobs:
       - name: Deploy UI
         run: |-
           cd ./apps/project_front
+          kubectl config set-context --current --namespace=todo-${GITHUB_REF#refs/heads/}
+          kustomize edit set namespace todo-${GITHUB_REF#refs/heads/}
           kustomize edit set image PROJECT/IMAGE=gcr.io/$PROJECT_ID/todoapp-ui:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
           kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment/todo-ui-dep -n todo-namespace
+          kubectl rollout status deployment/todo-ui-dep -n todo-${GITHUB_REF#refs/heads/}
           kubectl get services -o wide
