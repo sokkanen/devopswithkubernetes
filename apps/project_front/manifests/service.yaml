@@ -4,10 +4,10 @@ metadata:
   name: todo-ui-svc
   namespace: todo-namespace
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: todo-ui
   ports:
-    - port: 2345
+    - port: 80
       protocol: TCP
       targetPort: 8090
