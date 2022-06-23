@@ -71,3 +71,7 @@
 -  &#45; Automated maintenance can happen at an uncovinient times
 -  &#45; Vendorlock. Migrating the DBaaS database to another location can be really hard
 -  &#45; Limited batabase engine versions & extensions.
+
+## 3.07 - Commitment
+
+I will be using Postgres with PersistentVolumeClaims. I have previous experience in working with Google Cloud SQL, so I want to try the another approach during this course.
