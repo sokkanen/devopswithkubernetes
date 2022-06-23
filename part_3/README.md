@@ -75,3 +75,15 @@
 ## 3.07 - Commitment
 
 I will be using Postgres with PersistentVolumeClaims. I have previous experience in working with Google Cloud SQL, so I want to try the another approach during this course.
+
+## 3.08 - Project (TodoApp)
+
+### Steps
+
+- Created a horizontalpodautoscaler.yaml for todo-backend
+- Added the newly created autoscaler to kustomization.yaml
+- Tested locally & Deployed to GKE
+
+### Output
+
+![program output](output_308.png "Deployment")
