@@ -16,6 +16,10 @@ spec:
       containers:
         - name: pingpong
           image: sokkanen/pingpong:207a
+          resources:
+            limits:
+              cpu: "150m"
+              memory: "100Mi"
           envFrom:
           - configMapRef:
               name: pingpong-config

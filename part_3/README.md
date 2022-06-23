@@ -87,3 +87,16 @@ I will be using Postgres with PersistentVolumeClaims. I have previous experience
 ### Output
 
 ![program output](output_308.png "Deployment")
+
+## 3.09 - Logger, PingPong
+
+### Steps
+
+- Created a horizontalpodautoscaler.yaml for both logger & pingpong deployments.
+- Created kustomization.yaml for logger, pingpong & timestamper.
+- Tested locally & Deployed to GKE
+
+### Output
+
+![program output](output_309_1.png "Deployment")
+![program output](output_309_2.png "Deployment")
