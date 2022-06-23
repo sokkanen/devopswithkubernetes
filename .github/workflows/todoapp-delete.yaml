@@ -1,4 +1,4 @@
-name: Release todo-application
+name: Remove todo-application from a namespace
 
 on:
   delete:
@@ -14,8 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@main
         with:
@@ -28,4 +26,4 @@ jobs:
           gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
       - name: Remove all from a deleted branch namespace
         run: |-
-          kubectl delete namespace todo-${GITHUB_REF#refs/heads/}
+          kubectl delete namespace todo-${{ github.event.ref }}
