@@ -28,4 +28,4 @@ jobs:
           gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
       - name: Remove all from a deleted branch namespace
         run: |-
-          kubectl delete all --all -n todo-${GITHUB_REF#refs/heads/}
+          kubectl delete namespace todo-${GITHUB_REF#refs/heads/}
