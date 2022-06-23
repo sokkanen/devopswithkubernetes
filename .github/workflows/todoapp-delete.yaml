@@ -1,0 +1,31 @@
+name: Release todo-application
+
+on:
+  delete:
+
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GKE_CLUSTER: dwk-cluster
+  GKE_ZONE: europe-north1-a
+
+jobs:
+  setup-build-publish-deploy:
+    name: Teardown the deployment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@main
+        with:
+          project_id: ${{ secrets.GKE_PROJECT }}
+          service_account_key: ${{ secrets.GKE_SA_KEY }}
+          export_default_credentials: true
+      - run: |-
+          gcloud --quiet auth configure-docker
+      - run: |-
+          gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+      - name: Remove all from a deleted branch namespace
+        run: |-
+          kubectl delete all --all -n todo-${GITHUB_REF#refs/heads/}
