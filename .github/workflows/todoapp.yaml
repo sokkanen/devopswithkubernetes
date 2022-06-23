@@ -41,7 +41,12 @@ jobs:
         run: |-
           cd ./apps/project
           kubectl create namespace todo-${GITHUB_REF#refs/heads/} || true
-          kubectl get secret todo-secrets --namespace todo-namespace -oyaml | grep -v '^\s*namespace:\s' | kubectl apply --namespace todo-${GITHUB_REF#refs/heads/} -f -
+          kubectl get secret todo-secrets --namespace todo-namespace -oyaml \
+            | grep -v '^\s*namespace:\s' \
+            | grep -v  '^\s*creationTimestamp:\s' \
+            | grep -v  '^\s*resourceVersion:\s' \
+            | grep -v  '^\s*uid:\s' \
+            | kubectl apply --namespace todo-${GITHUB_REF#refs/heads/} -f -
           kubectl config set-context --current --namespace=todo-${GITHUB_REF#refs/heads/}
           kustomize edit set namespace todo-${GITHUB_REF#refs/heads/}
           kustomize edit set image PROJECT/IMAGE=gcr.io/$PROJECT_ID/todoapp:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
