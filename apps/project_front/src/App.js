@@ -17,6 +17,7 @@ const TodoForm = ({ addTodo }) => {
       <form onSubmit={addTodo}>
         <input id="new_todo" type="text" placeholder="Type in your todo"/>
         <button type="submit" >Add ToDo</button>
+        <h1>Wow, Greetings from another branch!</h1>
       </form>
     </div>
   )
@@ -58,7 +59,6 @@ const App = () => {
   return (
     <div className="main">
       <div className="main-image" id="image">
-        <h1>Wow, Greetings from another branch!</h1>
         <img src={image} alt="some random content"/>
       </div>
         <TodoForm addTodo={handleSubmit}/>
