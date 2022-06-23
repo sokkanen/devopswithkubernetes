@@ -53,3 +53,21 @@
 ### Output
 
 ![program output](output_305.png "Deployment")
+
+## 3.06 - DBaaS vs DIY
+
+### DIY:
+-  &#43; No vendorlock when using a DIY database
+-  &#43; Can run any database with any extension
+-  &#45; No automated backup tools available. Backups must be done manually with, for example, cronjob, cloud function and a storage bucket. All of this adds to the total cost.
+-  &#45; Maintaining the database has to be done manually through additional deployments (e.g. PgAdmin)
+-  &#45; Difficult to span the database accross multiple zones / regions (resilience & availability).
+
+### DBaaS:
+-  &#43; Initialization is easy.
+-  &#43; Automated maintenance and easy version updates
+-  &#43; Automated backup tools ja easy recovery
+-  &#43; Easy to span the database instances accross multiple locations (resilience & availability)
+-  &#45; Automated maintenance can happen at an uncovinient times
+-  &#45; Vendorlock. Migrating the DBaaS database to another location can be really hard
+-  &#45; Limited batabase engine versions & extensions.
