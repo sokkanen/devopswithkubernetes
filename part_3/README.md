@@ -100,3 +100,14 @@ I will be using Postgres with PersistentVolumeClaims. I have previous experience
 
 ![program output](output_309_1.png "Deployment")
 ![program output](output_309_2.png "Deployment")
+
+## 3.10 - Project (Todoapp)
+
+### Steps
+
+- Logging is enabled by default on a new cluster
+- Filtered logs with a word `todo`.
+
+### Output
+
+![program output](output_310.png "Logs")
