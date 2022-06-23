@@ -9,7 +9,8 @@ env:
   GKE_ZONE: europe-north1-a
 
 jobs:
-  setup-build-publish-deploy:
+  delete-deployment:
+    if: github.event.ref_type == 'branch'
     name: Teardown the deployment
     runs-on: ubuntu-latest
 
