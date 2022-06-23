@@ -42,3 +42,14 @@
 ### Output
 
 ![program output](output_304.png "Deployment")
+
+## 3.05 - Project (TodoApp)
+
+### Steps
+
+- Created a new GitHub action `todoapp-delete.yaml` for removing namespace `todo-<BranchName>` in the case of branch deletion.
+- Tested & Working
+
+### Output
+
+![program output](output_305.png "Deployment")
