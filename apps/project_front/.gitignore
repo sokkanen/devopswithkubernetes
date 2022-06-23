@@ -22,4 +22,4 @@ yarn-error.log*
 
 # bff
 /bff/node_modules
-/bff/build
+/bff/build/
