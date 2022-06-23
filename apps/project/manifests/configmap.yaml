@@ -6,7 +6,7 @@ metadata:
   labels:
     app: todo-backend
 data:
-  APP_PG_HOST: todo-db-svc.todo-namespace
+  APP_PG_HOST: todo-db-svc
   APP_PG_USER: postgres
   APP_PG_DB: postgres
   APP_PG_PORT: "5432"
