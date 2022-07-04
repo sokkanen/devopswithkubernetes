@@ -15,11 +15,17 @@ spec:
     spec:
       containers:
         - name: logger
-          image: sokkanen/logger:206a
+          image: sokkanen/logger:401
           resources:
             limits:
               cpu: "150m"
               memory: "100Mi"
+          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            httpGet:
+               path: /health
+               port: 3000
           env:
             - name: MESSAGE
               valueFrom:

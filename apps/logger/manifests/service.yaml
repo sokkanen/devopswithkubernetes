@@ -4,7 +4,7 @@ metadata:
   name: logger-svc
   namespace: logger-namespace
 spec:
-  type: NodePort # NodePort needed for GKE Ingress. ClusterIP for internal.
+  type: ClusterIP # NodePort needed for GKE Ingress. ClusterIP for internal.
   selector:
     app: logger
   ports:

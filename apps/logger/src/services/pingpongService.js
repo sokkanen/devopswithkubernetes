@@ -12,3 +12,13 @@ export const getPingPongs = async () => {
         throw error
     }
 }
+
+export const checkHealth = async () => {
+    try {
+        const response = await axios.get(`http://${URL}:${PINGPONGPORT}/health`)
+        return true
+    } catch (error) {
+        console.log(error)
+        return false
+    }
+}

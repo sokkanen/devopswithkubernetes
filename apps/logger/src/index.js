@@ -2,7 +2,7 @@ import express from 'express'
 import 'express-async-errors'
 
 import { readLatestFromFile } from './reader.js'
-import { getPingPongs } from './services/pingpongService.js'
+import { getPingPongs, checkHealth } from './services/pingpongService.js'
 import { getTimeStamp } from './services/timestampService.js'
 
 const app = express()
@@ -15,6 +15,13 @@ app.get('/', async (_req, res) => {
     const pongs = await getPingPongs()
     const timeStamp = await getTimeStamp()
     res.send(`${MESSAGE}\n${timeStamp}Ping / Pongs: ${pongs}`)
+})
+
+app.get('/health', async (_req, res) => {
+    const pingPongReady = await checkHealth()
+    pingPongReady ?
+    res.send('OK') :
+    res.status(500).send()
 })
 
 app.use((_err, _req, res, _next) => {

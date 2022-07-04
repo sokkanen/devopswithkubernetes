@@ -27,17 +27,29 @@ export const executeQuery = async (query, parameters) => {
         return result
     } catch (error) {
         console.error(error.stack)
-        error.name = 'dbError'
+        error.type = 'dbError'
         throw error
     } finally {
         client.release()
     }
 }
 
+export const testDbConnection = async () => {
+    try {
+        await executeQuery('SELECT NOW();')
+        return true
+    } catch (error) {
+        return false
+    }
+}
+
 export const createTables = async () => {
-    await Promise.all([
-        await executeQuery(queries.createPingPongTable),
-        await executeQuery(queries.initializePingPongs)
-    ])
-    console.log('Tables initialized successfully.')
+    const connected = await testDbConnection()
+    if (connected) {
+        await Promise.all([
+            await executeQuery(queries.createPingPongTable),
+            await executeQuery(queries.initializePingPongs)
+        ])
+        console.log('Tables initialized successfully.')
+    }
 }

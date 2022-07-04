@@ -15,11 +15,17 @@ spec:
     spec:
       containers:
         - name: pingpong
-          image: sokkanen/pingpong:207a
+          image: sokkanen/pingpong:401c
           resources:
             limits:
               cpu: "150m"
               memory: "100Mi"
+          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            httpGet:
+               path: /health
+               port: 3010
           envFrom:
           - configMapRef:
               name: pingpong-config

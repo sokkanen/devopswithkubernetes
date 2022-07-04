@@ -4,8 +4,8 @@ resources:
   - manifests/pingpong_db/configmap.yaml
   - manifests/pingpong_db/service.yaml
   - manifests/pingpong_db/statefulset.yaml
+  - manifests/service.yaml
   - manifests/configmap.yaml
   - manifests/secret.yaml
-  - manifests/loadbalancer.yaml
   - manifests/deployment.yaml
   - manifests/horizontalpodautoscaler.yaml
