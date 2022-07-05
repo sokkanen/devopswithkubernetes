@@ -32,9 +32,25 @@ export const executeQuery = async (query, parameters) => {
     }
 }
 
+export const testDbConnection = async () => {
+    try {
+        await executeQuery('SELECT NOW();')
+        return true
+    } catch (error) {
+        return false
+    }
+}
+
 export const createTables = async () => {
-    await Promise.all([
-        await executeQuery(queries.createTodosTable)
-    ])
-    console.log('Tables initialized successfully.')
+    const intervalId = setInterval(async () => {
+        const connected = await testDbConnection()
+        if (connected) {
+            await Promise.all([
+                await executeQuery(queries.createTodosTable)
+            ])
+            console.log('Tables initialized successfully.')
+            clearInterval(intervalId)
+        }  
+    }, 5000);
+
 }

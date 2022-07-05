@@ -4,7 +4,7 @@ metadata:
   name: todo-ui-svc
   namespace: todo-namespace
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: todo-ui
   ports:

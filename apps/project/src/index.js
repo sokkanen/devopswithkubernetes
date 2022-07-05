@@ -1,15 +1,21 @@
 import 'dotenv/config'
 import express from 'express'
 import 'express-async-errors'
-import { createTables } from './db/db.js'
+import { createTables, testDbConnection } from './db/db.js'
 import { getImage } from './services/image-service.js'
 import { todoRouter } from './routers/todo-router.js'
-
 
 const app = express()
 app.use(express.json())
 const PORT = process.env.PORT ?? 8080
 await createTables()
+
+app.get('/healthz', async (_req, res) => {
+    const appReady = await testDbConnection()
+    appReady ?
+    res.status(200).send('OK') :
+    res.status(500).send()
+})
 
 app.get('/api/image', async (_req, res) => {
     const image = await getImage()
@@ -19,7 +25,7 @@ app.get('/api/image', async (_req, res) => {
 
 app.use('/api/todos', todoRouter)
 
-app.use('*',  (req, res, next) => {
+app.use('*', (req, res, next) => {
     console.log(`Unknown path ${req.baseUrl}`)
     res.status(404).send()
 })

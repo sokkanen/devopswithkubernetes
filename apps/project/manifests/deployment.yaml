@@ -16,6 +16,18 @@ spec:
       containers:
         - name: todo-backend
           image: PROJECT/IMAGE
+          readinessProbe:
+            initialDelaySeconds: 10 
+            periodSeconds: 5
+            httpGet:
+               path: /healthz
+               port: 8080
+          livenessProbe:
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            httpGet:
+               path: /healthz
+               port: 8080
           resources:
             limits:
               cpu: "150m"
