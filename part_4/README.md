@@ -21,3 +21,14 @@
 ### Output
 
 ![program output](output_402.png "Deployment")
+
+## 4.03 - Prometheus
+
+### Steps
+
+- Started port-forwarding
+- Followed the documentation to create the requested query
+
+### Output
+
+![program output](output_403.png "Deployment")
