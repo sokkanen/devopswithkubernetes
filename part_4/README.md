@@ -32,3 +32,19 @@
 ### Output
 
 ![program output](output_403.png "Deployment")
+
+## 4.04 - Project
+
+### Steps
+
+- Started Rollout & Analysistemplate for the project backend
+- Tested with `result[0] == 0.00` to ensure a failing analysis will prevent deployment.
+- Returned to sane values and got a successful rollout.
+
+### Output (Failed)
+
+![program output](output_404a.png "Deployment")
+
+### Output (Success)
+
+![program output](output_404b.png "Deployment")
