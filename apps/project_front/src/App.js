@@ -1,13 +1,32 @@
-import { useState, useEffect } from 'react'
-import { getTodos, addTodo } from './services/todo-service'
+import { useState, useEffect } from 'react'
+import { getTodos, addTodo, setAsComplete } from './services/todo-service'
 import { getImage } from './services/image-service'
 import './App.css';
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, btnFunction }) => {
   return (
-    <ol className="todo-list">
-      {todos.map((todo) => <li key={todo.todo}>{todo.todo}</li>)}
-    </ol>
+    <div className='todo-list'>
+      {todos.sort((a, b) => {
+        if (a.completed && !b.completed) {
+          return 1
+        } else if (!a.completed && b.completed) {
+          return -1
+        }
+        return 0
+      }).map((todo, idx) => 
+        <div 
+          key={todo.id} 
+          className={todo.completed ? 'todo todo-complete' : 'todo'}
+        > 
+          <p className='todo-text'>{idx + 1}: {todo.todo}</p>
+          {!todo.completed ? 
+          <button className='todo-button' onClick={() => btnFunction(todo)}>
+            Mark as complete
+          </button>
+          : null }
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -55,14 +74,25 @@ const App = () => {
     }
   }
 
+  const handleSetAsComplete = async (todo) => {
+    await setAsComplete(todo)
+    setTodos(todos => todos.map(t => {
+      if(t.id === todo.id) {
+        t.completed = true
+      }
+      return t
+      })
+    )
+  }
+
   return (
     <div className="main">
       <div className="main-image" id="image">
-        <img src={image} alt="some random content"/>
+        <img className="image" src={image} alt="some random content"/>
       </div>
         <TodoForm addTodo={handleSubmit}/>
         <p className="new-todo-error" id="new_todo_error">{todoError}</p>
-        <TodoList todos={todos}/>
+        <TodoList todos={todos} btnFunction={handleSetAsComplete}/>
     </div>
   )
 }

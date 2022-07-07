@@ -1,5 +1,5 @@
 import express from 'express'
-import { getTodos, addTodo } from '../services/todo-service.js'
+import { getTodos, addTodo, setAsComplete } from '../services/todo-service.js'
 
 export const todoRouter = express.Router()
 
@@ -11,6 +11,11 @@ todoRouter.get('/', async (_req, res) => {
 todoRouter.post('/', async (req, res) => {  
     const added = await addTodo(req.body.todo)
     res.send(added)
+})
+
+todoRouter.put('/', async (req, res) => {
+    await setAsComplete(req.body.todo)
+    res.send({ result: 'OK' })
 })
 
 todoRouter.use((_error, _req, res, _next) => {

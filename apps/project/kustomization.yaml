@@ -13,4 +13,4 @@ resources:
   - manifests/rollout.yaml
 images:
   - name: PROJECT/IMAGE
-    newName: sokkanen/todoapp:402
+    newName: sokkanen/todoapp:405

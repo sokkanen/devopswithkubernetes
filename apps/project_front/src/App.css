@@ -6,7 +6,7 @@
       ". image list"
       ". add list"
       ". error list";
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 4fr 8fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
 
@@ -15,8 +15,8 @@
 }
 
 .image {
-  max-width: 640px;
-  max-height: 640px;
+  max-width: 800px;
+  max-height: 600px;
 }
 
 .todo-input {
@@ -25,6 +25,39 @@
 
 .todo-list {
   grid-area: list;
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+}
+
+.todo {
+  padding: 5px;
+  margin: 0.5rem;
+  max-height: 2rem;
+  display: grid;
+  grid-template-areas: "text btn";
+  grid-template-columns: 3fr 1fr;
+  overflow-wrap: anywhere;
+}
+
+.todo-complete {
+  text-decoration: line-through;
+}
+
+.todo-text {
+  grid-area: text;
+}
+
+.todo-button {
+  grid-area: btn;
+  margin-left: 10px;
+  color: white;
+  background-color: cornflowerblue;
+  border-radius: 24px;
+  font-size: large;
+  max-width: 200px;
+  max-height: 2rem;
+  right: 0px;
 }
 
 .new-todo-error {

@@ -20,6 +20,14 @@ export const addTodo = async (todo) => {
     return result.rows[0]
 }
 
+export const setAsComplete = async (todo) => {
+    console.log(`Setting todo id ${todo.id} as complete...`)
+    const params = [todo.id]
+    await executeQuery(queries.setAsComplete, params)
+    console.log(`Todo id ${todo.id} set as complete successfully.`)
+    return
+}
+
 export const getTodos = async () => {
     console.log('Fetching all todos')
     const todos = await executeQuery(queries.getTodos)

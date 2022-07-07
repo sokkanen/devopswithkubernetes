@@ -8,15 +8,22 @@ const createTodosTable = `
 
 const addTodo = `
     INSERT INTO "todos" (id, todo, completed)
-    VALUES ($1, $2, $3) RETURNING todo;
+    VALUES ($1, $2, $3) RETURNING id, todo, completed;
 `
 
 const getTodos = `
     SELECT * FROM "todos";
 `
 
+const setAsComplete = `
+    UPDATE "todos"
+    SET completed = 1
+    WHERE id = $1;
+`
+
 export default { 
     createTodosTable,
     addTodo,
-    getTodos
+    getTodos,
+    setAsComplete
 }
