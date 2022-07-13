@@ -4,6 +4,7 @@ import 'express-async-errors'
 import { createTables, testDbConnection } from './db/db.js'
 import { getImage } from './services/image-service.js'
 import { todoRouter } from './routers/todo-router.js'
+import { connect } from './services/nats-client.js'
 
 const app = express()
 app.use(express.json())
@@ -30,6 +31,7 @@ app.use('*', (req, res, next) => {
     res.status(404).send()
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
     console.log(`Server started in port ${PORT}`)
+    await connect()
 })

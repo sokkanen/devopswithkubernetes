@@ -1,6 +1,7 @@
 import { v4 } from 'uuid'
 import queries from '../db/queries.js'
-import { executeQuery } from '../db/db.js'
+import { executeQuery } from '../db/db.js'
+import { publish } from './nats-client.js'
 
 const validateTodo = (todo) => {
     if (todo.length > 140 || todo.length === 0) {
@@ -17,6 +18,9 @@ export const addTodo = async (todo) => {
     console.log(`Inserting a new todo...`)
     const result = await executeQuery(queries.addTodo, params)
     console.log(`New todo inserted successfully.`)
+
+    publish(result.rows[0])
+
     return result.rows[0]
 }
 

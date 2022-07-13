@@ -58,3 +58,17 @@
 ### Output
 
 ![program output](output_405.png "Deployment")
+
+## 4.06 - Project
+
+### Steps
+
+- Deployend NATS to the local Cluster
+- Created Broadcaster microservice to subscribe to NATS and forward messages to Telegram. 
+  - Deployed the service with 6 replicas. 
+  - A named queue solved all the issues with multiple messages being sent to Telegram.
+- Refactored project backend to publish new todos to NATS subject.
+
+### Output
+
+![program output](output_406.gif "Deployment")
