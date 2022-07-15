@@ -35,3 +35,5 @@ spec:
           envFrom:
           - configMapRef:
               name: broadcaster-config
+          - secretRef:
+              name: todo-secrets

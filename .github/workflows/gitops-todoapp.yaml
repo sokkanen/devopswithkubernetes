@@ -17,16 +17,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set secrets
-        uses: franzbischoff/replace_envs@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          APP_PG_PASSWORD: ${{ secrets.APP_PG_PASSWORD }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-        with:
-          from_file: apps/project/manifests/rollout.yaml
-          to_file: apps/project/manifests/rollout.yaml
-          commit: 'true'
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
@@ -60,16 +50,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set secrets
-        uses: franzbischoff/replace_envs@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-        with:
-          from_file: apps/broadcaster/manifests/deployment.yaml
-          to_file: apps/broadcaster/manifests/deployment.yaml
-          commit: 'true'
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
@@ -89,7 +69,7 @@ jobs:
         working-directory: apps/broadcaster
         run: |-
           kustomize edit set image PROJECT/IMAGE=sokkanen/broadcaster:${{ github.sha }}
-          
+
       - uses: EndBug/add-and-commit@v7
         with:
           add: 'apps/project/kustomization.yaml'
