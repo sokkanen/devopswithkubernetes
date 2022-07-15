@@ -42,7 +42,7 @@ jobs:
           APP_PG_PASSWORD: ${{ secrets.APP_PG_PASSWORD }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         with:
-          filename: /apps/project/manifests/rollout.yaml
+          filename: apps/project/manifests/rollout.yaml
 
       - uses: EndBug/add-and-commit@v7
         with:
@@ -83,7 +83,7 @@ jobs:
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
         with:
-          filename: /apps/project/manifests/deployment.yaml
+          filename: apps/project/manifests/deployment.yaml
 
       - uses: EndBug/add-and-commit@v7
         with:
