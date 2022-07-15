@@ -40,5 +40,3 @@ spec:
           envFrom:
           - configMapRef:
               name: broadcaster-config
-          - secretRef:
-              name: broadcaster-secrets

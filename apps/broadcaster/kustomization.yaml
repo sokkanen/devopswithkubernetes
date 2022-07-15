@@ -7,4 +7,3 @@ resources:
   - manifests/deployment.yaml
 images:
   - name: PROJECT/IMAGE
-    newName: sokkanen/broadcaster:406k
