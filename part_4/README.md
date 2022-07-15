@@ -72,3 +72,15 @@
 ### Output
 
 ![program output](output_406.gif "Deployment")
+
+## 4.07 - Flux
+
+### Steps
+
+- Flux repository: https://github.com/sokkanen/kube-cluster-dwk/
+  - Included resources:
+    - Namespaces
+    - Argo-rollouts
+    - Prometheus
+    - NATS
+  - Tested with deleting and re-creating cluster
