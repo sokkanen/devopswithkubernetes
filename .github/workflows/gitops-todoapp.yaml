@@ -33,7 +33,7 @@ jobs:
       - name: Set up Kustomize
         uses: imranismail/setup-kustomize@v1
       - name: Update yamls
-        working-directory: apps/project/manifests
+        working-directory: apps/project
         run: |-
           kustomize edit set image PROJECT/IMAGE=sokkanen/todoapp:${{ github.sha }}
       - name: Set secrets
@@ -74,7 +74,7 @@ jobs:
       - name: Set up Kustomize
         uses: imranismail/setup-kustomize@v1
       - name: Update yamls
-        working-directory: apps/broadcaster/manifests
+        working-directory: apps/broadcaster
         run: |-
           kustomize edit set image PROJECT/IMAGE=sokkanen/broadcaster:${{ github.sha }}
       - name: Set secrets
@@ -115,7 +115,7 @@ jobs:
       - name: Set up Kustomize
         uses: imranismail/setup-kustomize@v1
       - name: Update yamls
-        working-directory: apps/project_front/manifests
+        working-directory: apps/project_front
         run: |-
           kustomize edit set image PROJECT/IMAGE=sokkanen/todoapp-ui:${{ github.sha }}
 
