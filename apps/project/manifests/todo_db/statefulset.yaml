@@ -17,11 +17,12 @@ spec:
       containers:
         - name: postgres
           image: postgres:14
+          env:
+          - name: POSTGRES_PASSWORD
+            value: POSTGRES_PASSWORD
           envFrom:
           - configMapRef:
               name: todo-db-config
-          - secretRef:
-              name: todo-secrets
           ports:
             - name: web
               containerPort: 5432

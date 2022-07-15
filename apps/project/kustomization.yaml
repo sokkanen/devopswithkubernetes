@@ -6,9 +6,6 @@ resources:
   - manifests/todo_db/statefulset.yaml
   - manifests/configmap.yaml
   - manifests/service.yaml
-#  - manifests/deployment.yaml
-  - manifests/secret.yaml
-#  - manifests/horizontalpodautoscaler.yaml
   - manifests/analysistemplate.yaml
   - manifests/rollout.yaml
 images:
