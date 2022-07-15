@@ -37,12 +37,15 @@ jobs:
         run: |-
           kustomize edit set image PROJECT/IMAGE=sokkanen/todoapp:${{ github.sha }}
       - name: Set secrets
-        uses: falnyr/replace-env-vars-action@master
+        uses: franzbischoff/replace_envs@v1
         env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           APP_PG_PASSWORD: ${{ secrets.APP_PG_PASSWORD }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         with:
-          filename: apps/project/manifests/rollout.yaml
+          from_file: apps/project/manifests/rollout.yaml
+          to_file: apps/project/manifests/rollout.yaml
+          commit: 'true'
 
       - uses: EndBug/add-and-commit@v7
         with:
