@@ -6,4 +6,4 @@ resources:
   - manifests/deployment.yaml
 images:
   - name: PROJECT/IMAGE
-    newName: sokkanen/todoapp-ui:latest
+    newName: sokkanen/todoapp-ui
