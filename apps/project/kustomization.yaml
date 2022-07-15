@@ -11,4 +11,4 @@ resources:
 images:
 - name: PROJECT/IMAGE
   newName: sokkanen/todoapp
-  newTag: 0f8a1deb253d6720a88bdf8dd3552cbd7a6c30dd
+  newTag: dd84f19b42be020479ef26035575f87e98434b9a
