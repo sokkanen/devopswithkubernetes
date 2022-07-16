@@ -20,6 +20,8 @@ spec:
           envFrom:
           - configMapRef:
               name: todo-db-config
+          - secretRef:
+              name: todo-secrets
           ports:
             - name: web
               containerPort: 5432
