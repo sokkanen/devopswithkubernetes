@@ -84,3 +84,17 @@
     - Prometheus
     - NATS
   - Tested with deleting and re-creating cluster
+
+## 4.08 - Project & Flux
+
+### Steps
+
+- Flux repository: https://github.com/sokkanen/kube-cluster-dwk/
+  - Included resources:
+    - Application deployment with flux
+    - SOPS configuration for the cluster.
+      - PGP key is passed to the cluster in with bootstrapping script
+      - Couldn't get working with an AGE -key, but PGP started working immediately
+  - Tested with deleting and re-creating cluster
+
+![program output](output_408.png "Deployment")
