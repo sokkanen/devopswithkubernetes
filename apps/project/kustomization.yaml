@@ -8,6 +8,7 @@ resources:
 - manifests/service.yaml
 - manifests/analysistemplate.yaml
 - manifests/rollout.yaml
+- manifests/secret.enc.yaml
 images:
 - name: PROJECT/IMAGE
   newName: sokkanen/todoapp
