@@ -1,0 +1,19 @@
+apiVersion: experimental.jso/v1
+kind: DummySite
+metadata:
+  name: dummiestsite
+  namespace: diy-space
+spec:
+  url: http://www.example.com
+  image: sokkanen/dummysite:latest
+
+---
+
+apiVersion: experimental.jso/v1
+kind: DummySite
+metadata:
+  name: dummiestsite666
+  namespace: diy-space
+spec:
+  url: http://www.example.com
+  image: sokkanen/dummysite:latest
