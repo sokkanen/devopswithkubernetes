@@ -10,10 +10,8 @@ get_resource() {
 
 # Serves the stored resource in port passed as a second parameter.
 serve_html() {
-	while true; do { \
-  	echo -ne "HTTP/1.0 200 OK\r\nContent-Length: $(wc -c <index.html)\r\n\r\n"; \
-  	cat index.html; } | nc -l -p 8080 ; \ 
-done
+	http-server "$1"
+#done
 }
 
 # main

@@ -22,12 +22,12 @@ spec:
             spec:
               type: object
               properties:
-                url:
+                website_url:
                   type: string
                 image:
                   type: string
       additionalPrinterColumns:
-        - name: URL
+        - name: Website URL
           type: string
           description: URL of the site to be copied
-          jsonPath: .spec.url
+          jsonPath: .spec.website_url
