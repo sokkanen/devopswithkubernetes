@@ -1,3 +1,11 @@
+import k8s from '@kubernetes/client-node'
+
+const kc = new k8s.KubeConfig();
+kc.loadFromCluster()
+const k8sAppsApi = kc.makeApiClient(k8s.AppsV1Api);
+const k8sIngressApi = kc.makeApiClient(k8s.NetworkingV1Api)
+const k8sCoreApi = kc.makeApiClient(k8s.CoreV1Api)
+
 const errorHandler = (error, type, ns, name) => {
     if (error.statusCode === 409) {
         console.log(`${type} for ${name} in ${ns} namespace already exists.`)
@@ -6,10 +14,10 @@ const errorHandler = (error, type, ns, name) => {
     }
 }
 
-export const createDeployment = async (api, ns, name, image, website_url) => {
+export const createDeployment = async (ns, name, image, website_url) => {
     console.log(`Creating a Deployment for ${name} in ${ns} namespace.`)
     try {
-        await api.createNamespacedDeployment(ns, {
+        await k8sAppsApi.createNamespacedDeployment(ns, {
             metadata: {
                 name: `${name}-app-dep`
             },
@@ -20,18 +28,23 @@ export const createDeployment = async (api, ns, name, image, website_url) => {
                         app: `${name}-app`
                     }
                 },
-                containers: [
-                    {
-                        name: `${name}-app`,
-                        image: image,
-                        args: [website_url],
-                        ports: [
-                            {
+                template: {
+                    metadata: {
+                        labels: {
+                            app: `${name}-app`
+                        }
+                    },
+                    spec: {
+                        containers: [{
+                            name: `${name}-app`,
+                            image: image,
+                            args: [website_url],
+                            ports: [{
                                 containerPort: 8080
-                            }
-                        ]
+                            }]
+                        }]
                     }
-                ]
+                }
             }
         })
         console.log(`Creating Deployment for ${name} completed successfully.`)
@@ -41,10 +54,10 @@ export const createDeployment = async (api, ns, name, image, website_url) => {
     }
 }
 
-export const createService = async (api, ns, name) => {
+export const createService = async (ns, name) => {
     console.log(`Creating a new Service for ${name}...`)
     try {
-        const response = await api.createNamespacedService(ns, {
+        await k8sCoreApi.createNamespacedService(ns, {
             apiVersions: 'v1',
             kind: 'Service',
             metadata: { 
@@ -70,14 +83,14 @@ export const createService = async (api, ns, name) => {
     }
 }
 
-export const createIngress = async (api, ns, name) => {
+export const createIngress = async (ns, name) => {
     console.log(`Creating a new Ingress for ${name}...`)
-    const ingressResponse = await api.listNamespacedIngress(ns)
+    const ingressResponse = await k8sIngressApi.listNamespacedIngress(ns)
     if (ingressResponse.body.items.length > 0) {
         console.log(`An Ingress for DummySite in the ${ns} namespace already exists. Aborting request.`)
     } else {
         try {
-            const response = await api.createNamespacedIngress(ns, {
+            await k8sIngressApi.createNamespacedIngress(ns, {
                 apiVersions: 'networking.k8s.io/v1',
                 kind: 'Ingress',
                 metadata: { name: `${name}-ingress` },
