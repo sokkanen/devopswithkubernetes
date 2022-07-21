@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-ui-dep
+  namespace: todo-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-ui
+  template:
+    metadata:
+      labels:
+        app: todo-ui
+    spec:
+      containers:
+        - name: todo-ui
+          image: sokkanen/todoapp-ui:4e4c64c53451d00be0df5d2bfde1d325e6499a9e
+          resources:
+            limits:
+              cpu: "150m"
+              memory: "100Mi"

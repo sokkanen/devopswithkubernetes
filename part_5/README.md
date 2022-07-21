@@ -23,3 +23,16 @@ Files in [/5_01](./5_01/) -folder.
 
 ![program output](output_501a.png "Deployment")
 ![program output](output_501b.png "Deployment")
+
+## 5.02 - Project With Linkerd
+
+### Steps
+
+- Created a new cluster
+- Created Linkerd -injected versions of the yamls to [/5_02](./5_02/) folder
+- Installed Nats with Helm
+- Injected NATS with `kubectl get -n todo-namespace deploy -o yaml | linkerd inject - | kubectl apply -f -`
+
+### Output
+
+![program output](output_502.png "Deployment")
