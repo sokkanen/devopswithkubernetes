@@ -36,3 +36,15 @@ Files in [/5_01](./5_01/) -folder.
 ### Output
 
 ![program output](output_502.png "Deployment")
+
+## 5.03 - Canaries with Linkerd
+
+### Steps
+
+- Went through the Canary release task / demo
+
+### Output
+
+![program output](output_503a.png "Deployment")
+![program output](output_503b.png "Deployment")
+![program output](output_503c.png "Deployment")
