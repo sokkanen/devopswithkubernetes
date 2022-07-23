@@ -48,3 +48,27 @@ Files in [/5_01](./5_01/) -folder.
 ![program output](output_503a.png "Deployment")
 ![program output](output_503b.png "Deployment")
 ![program output](output_503c.png "Deployment")
+
+## 5.04 - Openshift vs. Rancher
+
+### Openshift
+
+- An actual Kubernetes Distribution, which adds on top of vanilla K8S.
+- Platform as a service (PAAS)
+- Created by Red Hat. An opensource container app platform.
+- Clusters must be created with Openshift.
+- Offers services for single-, multi- and hybrid-cloud solutions as well as on-prem clusters.
+- Opinionated approach with a lot of pre-installed tools
+- Tightly coupled with Hed Hat infrastructure.
+
+### Rancher
+
+- A toolset for managing clusters either in the cloud or on-prem.
+- Can create or import any cluster
+- Open source PAAS
+- Not as opinionated as Openshift
+
+Even though I should favor one against another, the betterness of a distribution or a toolset
+depends totally on current need. For my personal needs, Rancher sounds better, because of the easy installation
+and it's ability to import any of my clusters to a single management UI.
+
