@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - manifests/namespace.yaml
+  - manifests/secret.yaml
+  - manifests/pingpong_db/configmap.yaml
+  - manifests/pingpong_db/service.yaml
+  - manifests/pingpong_db/statefulset.yaml
+  - manifests/pingpong.yaml
+  - manifests/timestamper.yaml
+  - manifests/logger.yaml

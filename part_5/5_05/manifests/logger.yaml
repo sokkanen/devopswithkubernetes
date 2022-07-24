@@ -1,0 +1,21 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: logger
+  namespace: logger-namespace
+spec:
+  template:
+    spec:
+      containers:
+        - image: sokkanen/logger:kna1
+          env:
+            - name: MESSAGE
+              value: Hello from Knative!
+            - name: PINGPONG_URL
+              value: pingpong.logger-namespace.svc.cluster.local
+            - name: PINGPONG_PORT
+              value: "80"
+            - name: TIMESTAMP_URL
+              value: timestamper.logger-namespace.svc.cluster.local
+            - name: TIMESTAMP_PORT
+              value: "80"

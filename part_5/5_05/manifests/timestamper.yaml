@@ -1,0 +1,10 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: timestamper
+  namespace: logger-namespace
+spec:
+  template:
+    spec:
+      containers:
+        - image: sokkanen/timestamper:kna1

@@ -3,7 +3,7 @@ import { fetchPingPongs, incrementPingPongs } from './pingpong-service.js'
 import { createTables, testDbConnection } from './db.js' 
 
 const app = express()
-const PORT = 3010
+const PORT = process.env.PORT || 8080
 
 app.get('/health', async (_req, res) => {
     const appReady = await testDbConnection()

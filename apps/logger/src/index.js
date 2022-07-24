@@ -1,17 +1,14 @@
 import express from 'express'
 import 'express-async-errors'
 
-import { readLatestFromFile } from './reader.js'
 import { getPingPongs, checkHealth } from './services/pingpongService.js'
-import { getTimeStamp } from './services/timestampService.js'
+import { getTimeStamp } from './services/timestampService.js'
 
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 8080
 const MESSAGE = process.env.MESSAGE ?? 'No message. :('
 
 app.get('/', async (_req, res) => {
-    //const lastLine = await readLatestFromFile('../files', 'entries.txt')
-    //const pongs = await readLatestFromFile('../pongs', 'pongs.txt')
     const pongs = await getPingPongs()
     const timeStamp = await getTimeStamp()
     res.send(`${MESSAGE}\n${timeStamp}Ping / Pongs: ${pongs}`)

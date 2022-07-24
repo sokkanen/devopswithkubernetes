@@ -1,7 +1,7 @@
 import express from 'express'
 import { createTimestamp, getCurrent } from './timestamper.js'
 
-const PORT = 3020
+const PORT = process.env.PORT || 8080
 const app = express()
 createTimestamp()
 

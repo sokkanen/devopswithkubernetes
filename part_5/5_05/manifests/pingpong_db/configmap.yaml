@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pingpong-db-config
+  namespace: logger-namespace
+  labels:
+    app: pingpong-db
+data:
+  POSTGRES_DB: postgres
+  POSTGRES_USER: postgres

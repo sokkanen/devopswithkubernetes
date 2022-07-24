@@ -72,3 +72,14 @@ Even though I should favor one against another, the betterness of a distribution
 depends totally on current need. For my personal needs, Rancher sounds better, because of the easy installation
 and it's ability to import any of my clusters to a single management UI.
 
+## 5.05 - PingPong / Logger / Timestamper in Knative
+
+### Steps
+
+- Updated the envs used by applications. Built & pushed new images with `kna1` tags.
+- Created Knative versions of the yamls to [/5_05](./5_05/) folder
+- Applied everything but logger. Waited for all the resources to become available before applying logger.yaml.
+
+### Output
+
+![program output](output_505.png "Deployment")

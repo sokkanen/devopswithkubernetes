@@ -1,0 +1,22 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: pingpong
+  namespace: logger-namespace
+spec:
+  template:
+    spec:
+      containers:
+        - image: sokkanen/pingpong:kna1
+          env:
+            - name: APP_PG_HOST
+              value: pingpong-db-svc.logger-namespace
+            - name: APP_PG_USER
+              value: postgres
+            - name: APP_PG_DB
+              value: postgres
+            - name: APP_PG_PORT
+              value: "5432"
+          envFrom:
+          - secretRef:
+              name: pingpong-secrets
