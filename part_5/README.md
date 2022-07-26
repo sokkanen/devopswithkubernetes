@@ -95,10 +95,10 @@ and it's ability to import any of my clusters to a single management UI.
 - I've used **MongoDB** outside of the course.
 - I've used **MySQL** outside of the course.
 - I've used **Neo4j** outside of the course.
-- I've used **Oracle** outside of the course, as well as during this course.
-- I've used **PostgreSQL** outside of the course.
+- I've used **Oracle** outside of the course.
+- I've used **PostgreSQL** outside of the course, as well as during this course. PSQL was used in StatefulSet in the cluster, to persist data. 
 - I've used **Radis** outside of the course.
-- I've used **Flux** outside of the course.
+- I've used **Flux** outside of and during the course. Flux was used in part 4 of the course, to enable GitOps in a cluster.
 - I've used **Apache Spark** outside of the course.
 - I've used **Kafka** outside of the course.
 - I've used **RabbitMQ** outside of the course.
@@ -106,42 +106,44 @@ and it's ability to import any of my clusters to a single management UI.
 - I've used **Gradle** outside of the course.
 - I've used **Azure Pipelines** outside of the course.
 - I've used **Circle CI** outside of the course.
-- I've used **Github Actions** outside of the course.
+- I've used **Github Actions** outside of and during the course. Github actions were used from part 3 onwards.
 - I've used **GitLab** outside of the course.
 - I've used **Google Cloud Build** outside of the course.
 - I've used **Jenkins** outside of the course.
 - I've used **Travis CI** outside of the course.
-- I've used **K3S** during and outside of this course.
+- I've used **K3S** during and outside of this course. During this course, all the local cluster were built with k3d -> k3s -stack.
   - **K3S** uses **Runc** to spawn containers.
   - **K3S** uses **Containerd** as container runtime
   - **K3S** uses **Flannel** for networking
   - **K3S** uses **CoreDNS** for DNS services
   - **K3S** uses **Metrics server**
   - **K3S** uses **Traefik** as Ingress
-- I've used **Grafana** during and outside of this course.
+- I've used **Grafana** during and outside of this course. During the course, Grafana was mainly used in parts 2 & 5.
   - **Grafana** uses **InfluxData** as it's database
 - I've used **Rancher** outside of the course.
 - I've used **MS Azure** outside of the course.
-- I've used **Google Kubernetes Engine** during and outside of this course. GKE is by far my favorite way to use Kubernetes.
+- I've used **Google Kubernetes Engine** during and outside of this course. GKE was used throughout the 3rd part of the course.
 - I've used **Kubernetes** during and outside of this course.
-- I've used **etcd** outside of the course.
+- I've used **etcd** during and outside of the course. Kubernetes itself uses etcd.
 - I've used **F5** outside of the course.
 - I've used **HAPROXY** outside of the course.
 - I've used **NGINX** outside of the course.
-- I've used **Linkerd** during this course.
+- I've used **Linkerd** during this course. In part 5 Linkerd was used to create service mesh to the deployment.
 - I've used **Google Persistent Disk** outside of the course.
 - I've used **Google Container Registry
 - I've used **Azure Registry** outside of the course.
 - I've used **Kube Bench** outside of the course.
 - I've used **OAuth2 Proxy** outside of the course.
 - I've used **Keycloak** outside of the course.
-- I've used **Prometheus** during and outside of this course.
-- I've used **Google Stackdriver** during and outside of this course.
+- I've used **Prometheus** during and outside of this course. During this course Prometheus was used to gather metrics from the pods.
+- I've used **Google Stackdriver** during and outside of this course. During this course, the stackdriver was used in part 3.
 - I've used **Gradle** outside of the course.
 - I've used **Splunk** outside of the course.
 - I've used **Terraform** outside of the course.
 - I've used **Heroku** outside of the course.
-- I've used **Helm** outside and during the course.
-- I've used **Knative** during the course to create Serverless Apps on K8S.
+- I've used **Helm** outside and during the course. During the course, charts were installed on clusters from part 2 onwards.
+- I've used **Knative** during the course to create Serverless Apps on K8S in part 5.
 - I've used **Google Cloud Functions** outside of the course.
-- I've used **Azure Functions** outside and during the course.
+- I've used **Azure Functions** outside the course.
+
+![image](output_506.png "Image")
